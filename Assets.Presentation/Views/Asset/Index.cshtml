@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Assets.Presentation.Models.AssetsViewModel>
+
+@{
+    ViewData["Title"] = "Assets List";
+}
+
+<h1>Assets</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TagNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssetType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TagNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                        @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+<br/>
+<p>
+    <a asp-action="Create">Create New Asset</a>
+    <br/>
+    <a asp-controller="Asset" asp-action="Search">Search By Asset type</a>
+</p>
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            //alert('loaded');
+        });
+    </script>
+
+}

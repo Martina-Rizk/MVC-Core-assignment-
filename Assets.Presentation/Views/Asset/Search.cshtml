@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+
+<h3>Search Asset Type</h3>
+
+<select id="uxAssetTypes" asp-items="ViewBag.AssetTypes"></select>
+
+<div id="uxDisplay"></div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+
+            $("#uxAssetTypes").change(function () {
+                var AssetTypeId = $("#uxAssetTypes").val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: '/Asset/Types',
+                    data: { id: AssetTypeId }
+                }).done(function (result, statusText, xhdr) {
+                    $("#uxDisplay").html(result);
+                });
+            });
+        });
+    </script>
+}
